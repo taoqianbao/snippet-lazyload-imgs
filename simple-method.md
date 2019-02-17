@@ -4,13 +4,18 @@
 
 ## html 
 
+```html
 <img src="loading.png" data-src="image.png">
+```
 
 ## css
+```css
 img { display: block; margin-bottom: 50px; }
+```
 
 ## javascript
 
+```javascript
 function lazyload() {
  var images = document.getElementsByTagName('img');
  var n = 0; // 用于存储图片加载到的位置，避免每次都从第一张图片开始遍历 
@@ -29,5 +34,7 @@ function lazyload() {
 }
 lazyload(); //初始化首页的页面图片
 window.addEventListener('scroll', lazyload(), false);
+
+```
 
 
