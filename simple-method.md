@@ -17,20 +17,20 @@ img { display: block; margin-bottom: 50px; }
 
 ```javascript
 function lazyload() {
- var images = document.getElementsByTagName('img');
- var n = 0; // 用于存储图片加载到的位置，避免每次都从第一张图片开始遍历 
- return function() {
- var seeHeight = document.documentElement.clientHeight;
- var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
- for(var i = n; i < images.length; i++) {
-  if (images[i].offsetTop < seeHeight + scrollTop) {
-  if (images[i].getAttribute('src') === 'loading.png') {
-   images[i].src = images[i].getAttribute('data-src');
+  var images = document.getElementsByTagName('img');
+  var n = 0; // 用于存储图片加载到的位置，避免每次都从第一张图片开始遍历 
+  return function () {
+    var seeHeight = document.documentElement.clientHeight;
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    for (var i = n; i < images.length; i++) {
+      if (images[i].offsetTop < seeHeight + scrollTop) {
+        if (images[i].getAttribute('src') === 'loading.png') {
+          images[i].src = images[i].getAttribute('data-src');
+        }
+        n = n + 1;
+      }
+    }
   }
-  n = n + 1;
-  }
- }
- }
 }
 lazyload(); //初始化首页的页面图片
 window.addEventListener('scroll', lazyload(), false);
